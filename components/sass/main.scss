@@ -1,0 +1,50 @@
+@import "reset";
+@import "mixins";
+@import "vars";
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+body {
+  background-color: $BG_gray;
+  font-family: $bodyFont;
+  font-size: 1.4em;
+}
+
+nav {
+  padding-left: 50px;
+  padding-top: 60px;
+
+  .icon {
+    float: left;
+  }
+
+  .headline-container {
+    float: left;
+    padding-top: 10px;
+    background-color: $white;
+  }
+
+  h2 {
+    font-family: $headFont;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  h3 {
+    font-family: $headFont;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
+
+#content {
+  font-size: 2em;
+}
+

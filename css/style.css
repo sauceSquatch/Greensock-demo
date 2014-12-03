@@ -1,0 +1,110 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 6, ../_reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 27, ../_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 31, ../_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 34, ../_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 37, ../_reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 40, ../_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 45, ../_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 14, ../main.scss */
+body {
+  background-color: #ececec;
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.4em;
+}
+
+/* line 20, ../main.scss */
+nav {
+  padding-left: 50px;
+  padding-top: 60px;
+}
+/* line 24, ../main.scss */
+nav .icon {
+  float: left;
+}
+/* line 28, ../main.scss */
+nav .headline-container {
+  float: left;
+  padding-top: 10px;
+  background-color: #FFFFFF;
+}
+/* line 34, ../main.scss */
+nav h2 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+/* line 40, ../main.scss */
+nav h3 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* line 47, ../main.scss */
+#content {
+  font-size: 2em;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+{
+"version": 3,
+"mappings": ";;;;;AAKA;;;;;;;;;;;;wBAYyB;EACvB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,SAAS,EAAE,IAAI;EACf,IAAI,EAAE,OAAO;EACb,cAAc,EAAE,QAAQ;;;;;AAG1B;0CAC2C;EACzC,OAAO,EAAE,KAAK;;;;AAEhB,IAAK;EACH,WAAW,EAAE,CAAC;;;;AAEhB,MAAO;EACL,UAAU,EAAE,IAAI;;;;AAElB,aAAc;EACZ,MAAM,EAAE,IAAI;;;;AAEd;iBACkB;EAChB,OAAO,EAAE,EAAE;EACX,OAAO,EAAE,IAAI;;;;AAEf,KAAM;EACJ,eAAe,EAAE,QAAQ;EACzB,cAAc,EAAE,CAAC;;;;ACjCnB,IAAK;EACH,gBAAgB,ECdC,OAAO;EDexB,WAAW,ECXD,oBAAQ;EDYlB,SAAS,EAAE,KAAK;;;;AAGlB,GAAI;EACF,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;;;AAEjB,SAAM;EACJ,KAAK,EAAE,IAAI;;;AAGb,uBAAoB;EAClB,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;EACjB,gBAAgB,EC7BD,OAAO;;;ADgCxB,MAAG;EACD,WAAW,EC/BH,oBAAQ;EDgChB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;;;AAGjB,MAAG;EACD,WAAW,ECrCH,oBAAQ;EDsChB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;;;;AAInB,QAAS;EACP,SAAS,EAAE,GAAG",
+"sources": ["../_reset.scss","../main.scss","../_vars.scss"],
+"names": [],
+"file": "main.css"
+}
