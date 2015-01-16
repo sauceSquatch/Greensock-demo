@@ -24,3 +24,29 @@
    height: 100px;
   }
 }
+
+@mixin style-svg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
+  content: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color)
+}
+
+@mixin style-svg-bg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
+  background: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color: "white") 100% no-repeat
+}
+
+// mixin specifically for borders that require different radiuses (radii?)
+@mixin vendor-prefix-border($tl, $tr, $br, $bl) {
+  -webkit-border-top-left-radius: $tl;
+  -webkit-border-top-right-radius: $tr;
+  -webkit-border-bottom-right-radius: $br;
+  -webkit-border-bottom-left-radius: $bl;
+
+  -moz-border-radius-topleft: $tl;
+  -moz-border-radius-topright: $tr;
+  -moz-border-radius-bottomright: $br;
+  -moz-border-radius-bottomleft: $bl;
+
+  border-top-left-radius: $tl;
+  border-top-right-radius: $tr;
+  border-bottom-right-radius: $br;
+  border-bottom-left-radius: $bl;
+}

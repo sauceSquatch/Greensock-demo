@@ -59,6 +59,7 @@ table {
   border-spacing: 0;
 }
 
+/* SVG vars*/
 /* line 14, ../main.scss */
 body {
   background-color: #ececec;
@@ -68,33 +69,54 @@ body {
 
 /* line 20, ../main.scss */
 nav {
-  padding-left: 50px;
+  padding-left: 20%;
   padding-top: 60px;
 }
-/* line 24, ../main.scss */
-nav .icon {
-  float: left;
+/* line 25, ../main.scss */
+nav ul li {
+  left: 0px;
+  width: 10px;
+  padding-bottom: 10px;
+  margin-top: 255px;
+  cursor: hand;
 }
-/* line 28, ../main.scss */
-nav .headline-container {
-  float: left;
-  padding-top: 10px;
-  background-color: #FFFFFF;
-}
-/* line 34, ../main.scss */
-nav h2 {
-  font-family: "Oswald", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
+/* line 32, ../main.scss */
+nav ul li .icon {
+  position: absolute;
+  opacity: 0;
+  width: 75px;
+  height: 75px;
+  background-color: #c3d1db;
 }
 /* line 40, ../main.scss */
+nav ul li .headlines {
+  margin-left: 85px;
+  height: 75px;
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+/* line 49, ../main.scss */
+nav h2 {
+  font-family: "Oswald", sans-serif;
+  /*opacity: 0;*/
+  font-weight: 700;
+  font-size: 18px;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 200px;
+}
+/* line 59, ../main.scss */
 nav h3 {
   font-family: "Oswald", sans-serif;
+  /*opacity: 0;*/
   font-weight: 400;
   font-size: 14px;
+  padding-top: 5px;
+  padding-left: 10px;
+  width: 200px;
 }
 
-/* line 47, ../main.scss */
+/* line 70, ../main.scss */
 #content {
   font-size: 2em;
 }
@@ -103,7 +125,7 @@ nav h3 {
 
 {
 "version": 3,
-"mappings": ";;;;;AAKA;;;;;;;;;;;;wBAYyB;EACvB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,SAAS,EAAE,IAAI;EACf,IAAI,EAAE,OAAO;EACb,cAAc,EAAE,QAAQ;;;;;AAG1B;0CAC2C;EACzC,OAAO,EAAE,KAAK;;;;AAEhB,IAAK;EACH,WAAW,EAAE,CAAC;;;;AAEhB,MAAO;EACL,UAAU,EAAE,IAAI;;;;AAElB,aAAc;EACZ,MAAM,EAAE,IAAI;;;;AAEd;iBACkB;EAChB,OAAO,EAAE,EAAE;EACX,OAAO,EAAE,IAAI;;;;AAEf,KAAM;EACJ,eAAe,EAAE,QAAQ;EACzB,cAAc,EAAE,CAAC;;;;ACjCnB,IAAK;EACH,gBAAgB,ECdC,OAAO;EDexB,WAAW,ECXD,oBAAQ;EDYlB,SAAS,EAAE,KAAK;;;;AAGlB,GAAI;EACF,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;;;AAEjB,SAAM;EACJ,KAAK,EAAE,IAAI;;;AAGb,uBAAoB;EAClB,KAAK,EAAE,IAAI;EACX,WAAW,EAAE,IAAI;EACjB,gBAAgB,EC7BD,OAAO;;;ADgCxB,MAAG;EACD,WAAW,EC/BH,oBAAQ;EDgChB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;;;AAGjB,MAAG;EACD,WAAW,ECrCH,oBAAQ;EDsChB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;;;;AAInB,QAAS;EACP,SAAS,EAAE,GAAG",
+"mappings": ";;;;;AAKA;;;;;;;;;;;;wBAYyB;EACvB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,SAAS,EAAE,IAAI;EACf,IAAI,EAAE,OAAO;EACb,cAAc,EAAE,QAAQ;;;;;AAG1B;0CAC2C;EACzC,OAAO,EAAE,KAAK;;;;AAEhB,IAAK;EACH,WAAW,EAAE,CAAC;;;;AAEhB,MAAO;EACL,UAAU,EAAE,IAAI;;;;AAElB,aAAc;EACZ,MAAM,EAAE,IAAI;;;;AAEd;iBACkB;EAChB,OAAO,EAAE,EAAE;EACX,OAAO,EAAE,IAAI;;;;AAEf,KAAM;EACJ,eAAe,EAAE,QAAQ;EACzB,cAAc,EAAE,CAAC;;;;;ACjCnB,IAAK;EACH,gBAAgB,ECdE,OAAO;EDezB,WAAW,ECTD,oBAAQ;EDUlB,SAAS,EAAE,KAAK;;;;AAGlB,GAAI;EACF,YAAY,EAAE,GAAG;EACjB,WAAW,EAAE,IAAI;;;AAGf,SAAG;EACD,IAAI,EAAC,GAAG;EACR,KAAK,EAAE,IAAI;EACX,cAAc,EAAE,IAAI;EACpB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,IAAI;;;AAEZ,eAAM;EACJ,QAAQ,EAAE,QAAQ;EAClB,OAAO,EAAE,CAAC;EACV,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,gBAAgB,EAAE,OAAO;;;AAG3B,oBAAW;EACT,WAAW,EAAE,IAAI;EACjB,MAAM,EAAE,IAAI;EACZ,gBAAgB,ECzCJ,OAAO;ED0CnB,QAAQ,EAAE,MAAM;;;AAKtB,MAAG;EACD,WAAW,EC5CH,oBAAQ;;ED8ChB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;EAClB,KAAK,EAAE,KAAK;;;AAGd,MAAG;EACD,WAAW,ECtDH,oBAAQ;;EDwDhB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;EAChB,YAAY,EAAE,IAAI;EAClB,KAAK,EAAE,KAAK;;;;AAIhB,QAAS;EACP,SAAS,EAAE,GAAG",
 "sources": ["../_reset.scss","../main.scss","../_vars.scss"],
 "names": [],
 "file": "main.css"

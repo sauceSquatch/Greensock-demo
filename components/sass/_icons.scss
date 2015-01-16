@@ -1,0 +1,12 @@
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+}
+
+.icon_death {
+  :before {
+    @extend .icon;
+    @include style-svg($svg_death, $icon_grey);
+  }
+}
