@@ -1,12 +1,43 @@
+
+
+// .icon_death {
+//   :before {
+//     @extend .icon;
+//     @include style-svg($svg_death, $icon_grey);
+//   }
+// }
+
 .icon {
-  width: 1em;
-  height: 1em;
-  display: inline-block;
+  position: absolute;
+  opacity: 0;
+  width: 75px;
+  height: 75px;
+  background-color: #c3d1db;
+  // background-size: 50%
+  // &:before {
+  //   display: block;
+  //   background: url('data:image/svg+xml;charset=utf-8,' + $svg_death);
+  //   width: 50px;
+  //   height: 50px
+  // }
 }
 
 .icon_death {
-  :before {
-    @extend .icon;
-    @include style-svg($svg_death, $icon_grey);
-  }
+  background: url('data:image/svg+xml;charset=utf-8,' + $svg_death);
+  background-repeat: no-repeat;
+}
+
+.icon_beaker {
+  background: url('data:image/svg+xml;charset=utf-8,' + $svg_beaker);
+  background-repeat: no-repeat;
+}
+
+.icon_medicine {
+  background: url('data:image/svg+xml;charset=utf-8,' + $svg_medicine);
+  background-repeat: no-repeat;
+}
+
+.icon_rocket {
+  background: url('data:image/svg+xml;charset=utf-8,' + $svg_rocket);
+  background-repeat: no-repeat;
 }

@@ -25,13 +25,30 @@
   }
 }
 
-@mixin style-svg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
-  content: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color)
-}
+// @function create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color) {
+//   // Convert the CSS property values to strings
+//   $fill_color: "" + $fill_color;
+//   $stroke_color: "" + $stroke_color;
+//   $stroke_width: "" + $stroke_width;
+//   $background_color: "" + $background_color;
 
-@mixin style-svg-bg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
-  background: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color: "white") 100% no-repeat
-}
+//   // Update the SVG with the supplied values
+//   $customized_svg: str-replace($svg, "fill_color", $fill_color);
+//   $customized_svg: str-replace($customized_svg, "stroke_color", $stroke_color);
+//   $customized_svg: str-replace($customized_svg, "stroke_width", $stroke_width);
+//   $customized_svg: str-replace($customized_svg, "background_color", $background_color);
+//   // URL encode any hashes
+//   $customized_svg: str-replace($customized_svg, "#", "%23");
+//   @return url('data:image/svg+xml;charset=utf-8,#{$customized_svg}');
+// }
+
+// @mixin style-svg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
+//   content: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color)
+// }
+
+// @mixin style-svg-bg($svg, $fill_color: $icon_black, $stroke_color: "", $stroke_width: "", $background_color: "white") {
+//   background: create-svg($svg, $fill_color, $stroke_color, $stroke_width, $background_color: "white") 100% no-repeat
+// }
 
 // mixin specifically for borders that require different radiuses (radii?)
 @mixin vendor-prefix-border($tl, $tr, $br, $bl) {

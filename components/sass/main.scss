@@ -1,6 +1,7 @@
 @import "reset";
 @import "mixins";
 @import "vars";
+@import "icons";
 
 @mixin clearfix {
   &:after {
@@ -27,15 +28,7 @@ nav {
       width: 10px;
       padding-bottom: 10px;
       margin-top: 255px;
-      cursor: hand; 
-
-      .icon {
-        position: absolute;
-        opacity: 0;
-        width: 75px;
-        height: 75px;
-        background-color: #c3d1db;
-      }
+      cursor: hand;
 
       .headlines {
         margin-left: 85px;
