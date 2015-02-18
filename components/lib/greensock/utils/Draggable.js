@@ -1,12 +1,12 @@
 /*!
- * VERSION: 0.10.7
- * DATE: 2014-10-14
- * UPDATES AND DOCS AT: http://www.greensock.com
+ * VERSION: 0.11.0
+ * DATE: 2015-01-20
+ * UPDATES AND DOCS AT: http://greensock.com
  *
  * Requires TweenLite and CSSPlugin version 1.11.0 or later (TweenMax contains both TweenLite and CSSPlugin). ThrowPropsPlugin is required for momentum-based continuation of movement after the mouse/touch is released (ThrowPropsPlugin is a membership benefit of Club GreenSock - http://www.greensock.com/club/).
  *
- * @license Copyright (c) 2008-2014, GreenSock. All rights reserved.
- * This work is subject to the terms at http://www.greensock.com/terms_of_use.html or for
+ * @license Copyright (c) 2008-2015, GreenSock. All rights reserved.
+ * This work is subject to the terms at http://greensock.com/standard-license or for
  * Club GreenSock members, the software agreement that was issued with your membership.
  * 
  * @author: Jack Doyle, jack@greensock.com
@@ -22,6 +22,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 			_tempVarsX = {css:{}},
 			_tempVarsY = {css:{}},
 			_tempVarsRotation = {css:{}},
+			_globals = _gsScope._gsDefine.globals,
 			_tempEvent = {}, //for populating with pageX/pageY in old versions of IE
 			_doc = document,
 			_docElement = _doc.documentElement || {},
@@ -792,7 +793,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 				EventDispatcher.call(this, target);
 				target = _unwrapElement(target); //in case the target is a selector object or selector text
 				if (!ThrowPropsPlugin) {
-					ThrowPropsPlugin = (_gsScope.GreenSockGlobals || _gsScope).com.greensock.plugins.ThrowPropsPlugin;
+					ThrowPropsPlugin = _globals.com.greensock.plugins.ThrowPropsPlugin;
 				}
 				this.vars = vars = vars || {};
 				this.target = target;
@@ -807,6 +808,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 					yProp = xyMode ? "y" : "top",
 					allowX = (type.indexOf("x") !== -1 || type.indexOf("left") !== -1 || type === "scroll"),
 					allowY = (type.indexOf("y") !== -1 || type.indexOf("top") !== -1 || type === "scroll"),
+					minimumMovement = vars.minimumMovement || 2,
 					self = this,
 					triggers = _slice(vars.trigger || vars.handle || target),
 					killProps = {},
@@ -988,7 +990,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 									}
 								}
 							}
-							self.tween = tween = ThrowPropsPlugin.to(scrollProxy || target, {throwProps:throwProps, ease:(vars.ease || Power3.easeOut), onComplete:vars.onThrowComplete, onCompleteParams:vars.onThrowCompleteParams, onCompleteScope:(vars.onThrowCompleteScope || self), onUpdate:(vars.fastMode ? vars.onThrowUpdate : syncXY), onUpdateParams:(vars.fastMode ? vars.onThrowUpdateParams : null), onUpdateScope:(vars.onThrowUpdateScope || self)}, (isNaN(vars.maxDuration) ? 2 : vars.maxDuration), (isNaN(vars.minDuration) ? 0.5 : vars.minDuration), (isNaN(vars.overshootTolerance) ? (1 - self.edgeResistance) + 0.2 : vars.overshootTolerance));
+							self.tween = tween = ThrowPropsPlugin.to(scrollProxy || target, {throwProps:throwProps, ease:(vars.ease || _globals.Power3.easeOut), onComplete:vars.onThrowComplete, onCompleteParams:vars.onThrowCompleteParams, onCompleteScope:(vars.onThrowCompleteScope || self), onUpdate:(vars.fastMode ? vars.onThrowUpdate : syncXY), onUpdateParams:(vars.fastMode ? vars.onThrowUpdateParams : null), onUpdateScope:(vars.onThrowUpdateScope || self)}, (isNaN(vars.maxDuration) ? 2 : vars.maxDuration), (isNaN(vars.minDuration) ? 0.5 : vars.minDuration), (isNaN(vars.overshootTolerance) ? (1 - self.edgeResistance) + 0.2 : vars.overshootTolerance));
 							if (!vars.fastMode) {
 								//to populate the end values, we just scrub the tween to the end, record the values, and then jump back to the beginning.
 								if (scrollProxy) {
@@ -1219,10 +1221,10 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 							}
 							yChange = (mouseY - startMouseY);
 							xChange = (mouseX - startMouseX);
-							if (yChange < 2 && yChange > -2) {
+							if (yChange < minimumMovement && yChange > -minimumMovement) {
 								yChange = 0;
 							}
-							if (xChange < 2 && xChange > -2) {
+							if (xChange < minimumMovement && xChange > -minimumMovement) {
 								xChange = 0;
 							}
 							if (self.lockAxis && (xChange || yChange)) {
@@ -1286,7 +1288,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 						self.isPressed = false;
 						var originalEvent = e,
 							wasDragging = self.isDragging,
-							touches, i;
+							touches, i, syntheticEvent;
 						if (touchEventTarget) {
 							_removeListener(touchEventTarget, "touchend", onRelease);
 							_removeListener(touchEventTarget, "touchmove", onMove);
@@ -1343,6 +1345,13 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 							}
 							_dispatchEvent(self, "release", "onRelease");
 							_dispatchEvent(self, "click", "onClick");
+							if (originalEvent.target.click) { //some browsers (like mobile Safari) don't properly trigger the click event
+								originalEvent.target.click();
+							} else if (_doc.createEvent) {
+								syntheticEvent = _doc.createEvent("MouseEvents");
+								syntheticEvent.initEvent("click", true, true);
+								originalEvent.target.dispatchEvent(syntheticEvent);
+							}
 						} else {
 							animate(vars.throwProps); //will skip if throwProps isn't defined or ThrowPropsPlugin isn't loaded.
 							if (!_isOldIE && originalEvent && (vars.dragClickables || !_isClickable(originalEvent.target)) && wasDragging) {
@@ -1442,7 +1451,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 					} else {
 						syncXY(true);
 					}
-					if (self.isPressed && (Math.abs(x - self.x) > 0.01 || (Math.abs(y - self.y) > 0.01 && !rotationMode))) {
+					if (self.isPressed && ((allowX && Math.abs(x - self.x) > 0.01) || (allowY && (Math.abs(y - self.y) > 0.01 && !rotationMode)))) {
 						recordStartPositions();
 					}
 					return self;
@@ -1579,7 +1588,7 @@ var _gsScope = (typeof(module) !== "undefined" && module.exports && typeof(globa
 		p.constructor = Draggable;
 		p.pointerX = p.pointerY = 0;
 		p.isDragging = p.isPressed = false;
-		Draggable.version = "0.10.7";
+		Draggable.version = "0.11.0";
 		Draggable.zIndex = 1000;
 
 		_addListener(_doc, "touchcancel", function() {
