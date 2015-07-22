@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     server = lr();
 
 var sassSources = [
+  'components/sass/*.sass',
   'components/sass/*.scss'
 ]
 
