@@ -6,8 +6,11 @@ $(document).ready(function()
 
 ///// INIT vars
 var nav = $("nav"),
-    navItems = [];
-selectedNavButton = "empty";
+    navItems = [],
+    rollOverWidth = 360,
+    rollOutWidth = 230,
+    selectedWidth = 260,
+    selectedNavButton = "empty";
 
 ///// INIT build
 initBuild = function() {
@@ -56,12 +59,20 @@ NavItem.prototype.addEventListeners = function(){
 
 }
 
+NavItem.prototype.animateIn = function(delay) {
+  TweenLite.to(this.obj, 0.55, {marginTop:0, ease:Power4.easeOut, delay:delay})
+  TweenLite.to(this.headlineBox, 0.75, {width:rollOutWidth, ease:Power4.easeInOut, delay:delay})
+  TweenLite.to(this.icon, 0.75, {drawSVG:"50% 50%", scale:1, autoAlpha:1, ease:Power4.easeInOut, delay:delay})
+  // TweenLite.to(this.headline, 0.75, {opacity:1, ease:Power4.easeInOut, delay:delay + 0.25});
+  // TweenLite.to(this.subhead, 0.75, {opacity:1, ease:Power4.easeInOut, delay:delay + 0.75});
+};
+
 onOver = function(evt) {
   if( $(this).is(".clicked") ) {
     // console.log("this is the active button buddy")
   } else {
     var headlines = $(".headlines", this);
-    TweenLite.to(headlines, 0.35, {height:130, width:450, backgroundColor:"#ecfafb", ease:Power4.easeOut});
+    TweenLite.to(headlines, 0.35, {height:130, width:rollOverWidth, backgroundColor:"#ecfafb", ease:Power4.easeOut});
     TweenLite.to($("h2", headlines), 0.45, {scale:1.45, color:"#6c4962", transformOrigin:"0% 0%", paddingBottom:"8px", ease:Power4.easeOut});
     TweenLite.to($("h3", headlines), 0.35, {scale:1.25, paddingLeft:"12px", transformOrigin:"0% 0%", ease:Power3.easeOut});
     TweenLite.to($(".icon", this), 0.35, {scale:1.5, transformOrigin:"100% 0%", ease:Power3.easeOut});
@@ -74,10 +85,10 @@ onOut = function(evt) {
     // console.log("this is the active button buddy")
   } else {
     var headlines = $(".headlines", this);
-    TweenLite.to(headlines, 0.25, {height:85, width:290, backgroundColor:"#ffffff", ease:Power2.easeIn});
+    TweenLite.to(headlines, 0.25, {height:85, width:rollOutWidth, backgroundColor:"#ffffff", ease:Power2.easeIn});
     TweenLite.to($("h2", headlines), 0.25, {scale:1, color:"#495a6c", transformOrigin:"0% 0%", paddingBottom:"0px", ease:Power2.easeIn});
     TweenLite.to($("h3", headlines), 0.25, {scale:1, paddingLeft:"10px", transformOrigin:"0% 0%", ease:Power2.easeIn});
-    TweenLite.to($(".icon", this), 0.25, {scale:0.75, transformOrigin:"100% 0%", ease:Power3.easeIn});
+    TweenLite.to($(".icon", this), 0.25, {scale:1, transformOrigin:"100% 0%", ease:Power3.easeIn});
   }
 
 }
@@ -86,11 +97,13 @@ onClick = function(evt) {
   var activeBtn = $( "li.clicked"),
       headlines = $(".headlines", activeBtn);
 
+  // move the entire Nav over to the left
+  TweenLite.to(nav, 0.75, {paddingLeft:20, ease:Power3.easeInOut});
   // transition out the selected button 
-  TweenLite.to(headlines, 0.25, {height:85, width:290, backgroundColor:"#ffffff", ease:Power2.easeIn});
+  TweenLite.to(headlines, 0.25, {height:85, width:rollOutWidth, backgroundColor:"#ffffff", ease:Power2.easeIn});
   TweenLite.to($("h2", headlines), 0.25, {scale:1, color:"#495a6c", transformOrigin:"0% 0%", paddingBottom:"0px", ease:Power2.easeIn});
   TweenLite.to($("h3", headlines), 0.25, {scale:1, color:"#495a6c", transformOrigin:"0% 0%", ease:Power2.easeIn});
-  TweenLite.to($(".icon", activeBtn), 0.25, {scale:0.75, transformOrigin:"100% 0%", ease:Power3.easeIn});
+  TweenLite.to($(".icon", activeBtn), 0.25, {scale:1, transformOrigin:"100% 0%", ease:Power3.easeIn});
   //remove clicked class from all buttons in menu
   activeBtn.removeClass("clicked");
 
@@ -99,29 +112,24 @@ onClick = function(evt) {
   selectedNavButton = $(this);
   selectedNavButton.addClass("clicked");
   selectSection(this.id.substring(7));
-  // console.log("selectedNavButton: ", selectedNavButton)
-  TweenLite.to($(".headlines", selectedNavButton), 0.25, {height:"95px", width:"500px", backgroundColor:"#495a6c"});
+  // console.log("sectionNum: ", this.id.substring(7))
+  TweenLite.to($(".headlines", selectedNavButton), 0.25, {height:95, width:selectedWidth, backgroundColor:"#495a6c"});
   TweenLite.to($("h2", selectedNavButton), 0.25, {scale:1, color:"#FFFFFF", transformOrigin:"0% 0%", paddingBottom:"0px", ease:Power2.easeIn});
   TweenLite.to($("h3", selectedNavButton), 0.25, {scale:1, color:"#FFFFFF", transformOrigin:"0% 0%", ease:Power2.easeIn});
   TweenLite.to($(".icon", this), 0.25, {scale:1, transformOrigin:"100% 0%", ease:Power3.easeIn});
 }
 
 
-NavItem.prototype.animateIn = function(delay) {
-  TweenLite.to(this.obj, 0.55, {marginTop:0, ease:Power4.easeOut, delay:delay})
-  TweenLite.to(this.headlineBox, 0.75, {width:290, ease:Power4.easeInOut, delay:delay})
-  TweenLite.to(this.icon, 0.75, {drawSVG:"50% 50%", scale:1, autoAlpha:1, ease:Power4.easeInOut, delay:delay})
-  // TweenLite.to(this.headline, 0.75, {opacity:1, ease:Power4.easeInOut, delay:delay + 0.25});
-  // TweenLite.to(this.subhead, 0.75, {opacity:1, ease:Power4.easeInOut, delay:delay + 0.75});
-};
-
 selectSection = function(sectionNum) {
-  var content = $("#content")
-  TweenLite.to(content, 0.75, {width:"100%", ease:Power4.easeOut});
-  TweenLite.to($(".view", content), 0.75, {height:"25px", backgroundColor:"#acacac", ease:Power4.easeOut});
+  var content = $("#content"),
+      disabledViewHeight = 75
+      contentTopPos = (disabledViewHeight * sectionNum) * -1 + 50;
+
+  TweenLite.to(content, 0.35, {left:325, width:400, top:contentTopPos, ease:Power4.easeOut});
+  TweenLite.to($(".view", content), 0.35, {height:disabledViewHeight, backgroundColor:"#acacac", ease:Power2.easeIn});
 
   // get the active view
-  TweenLite.to($("#view" + sectionNum, content), 1, {height:"680px", backgroundColor:"#775260", ease:Power4.easeOut})
+  TweenLite.to($("#view" + sectionNum, content), 1, {height:450, backgroundColor:"#775260", ease:Power4.easeOut})
   // switch(sectionNum) {
   //   case "1" : 
   //     TweenLite.to(content, 1.25, {marginTop:"0px", ease:Power4.easeOut});
