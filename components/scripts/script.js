@@ -75,7 +75,7 @@ onOver = function(evt) {
     TweenLite.to(headlines, 0.35, {height:130, width:rollOverWidth, backgroundColor:"#ecfafb", ease:Power4.easeOut});
     TweenLite.to($("h2", headlines), 0.45, {scale:1.45, color:"#6c4962", transformOrigin:"0% 0%", paddingBottom:"8px", ease:Power4.easeOut});
     TweenLite.to($("h3", headlines), 0.35, {scale:1.25, paddingLeft:"12px", transformOrigin:"0% 0%", ease:Power3.easeOut});
-    TweenLite.to($(".icon", this), 0.35, {scale:1.5, transformOrigin:"100% 0%", ease:Power3.easeOut});
+    TweenLite.to($(".icon", this), 0.35, {scale:1.5, transformOrigin:"125% 0%", ease:Power3.easeOut, rotationY:-90});
   }
   
 }
@@ -88,7 +88,7 @@ onOut = function(evt) {
     TweenLite.to(headlines, 0.25, {height:85, width:rollOutWidth, backgroundColor:"#ffffff", ease:Power2.easeIn});
     TweenLite.to($("h2", headlines), 0.25, {scale:1, color:"#495a6c", transformOrigin:"0% 0%", paddingBottom:"0px", ease:Power2.easeIn});
     TweenLite.to($("h3", headlines), 0.25, {scale:1, paddingLeft:"10px", transformOrigin:"0% 0%", ease:Power2.easeIn});
-    TweenLite.to($(".icon", this), 0.25, {scale:1, transformOrigin:"100% 0%", ease:Power3.easeIn});
+    TweenLite.to($(".icon", this), 0.25, {scale:1, transformOrigin:"125% 0%", ease:Power3.easeIn, rotationY:0});
   }
 
 }
@@ -130,15 +130,4 @@ selectSection = function(sectionNum) {
 
   // get the active view
   TweenLite.to($("#view" + sectionNum, content), 1, {height:450, backgroundColor:"#775260", ease:Power4.easeOut})
-  // switch(sectionNum) {
-  //   case "1" : 
-  //     TweenLite.to(content, 1.25, {marginTop:"0px", ease:Power4.easeOut});
-  //   case "2" :
-  //     TweenLite.to(content, 1.25, {marginTop:"-101px", ease:Power4.easeOut});
-  //   case "3" :
-  //     TweenLite.to(content, 1.25, {marginTop:"-201px", ease:Power4.easeOut});
-  //   case "4" :
-  //     TweenLite.to(content, 1.25, {marginTop:"-301px", ease:Power4.easeOut});
-
-  // }
 }
